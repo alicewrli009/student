@@ -20,7 +20,7 @@ Hi! My name is [Your Full Name].
 
 *hi* **hi**
 ~~hi~~
-That is so funny! :joy:
+ 
 
 Here's a sentence with a footnote. [^1]
 
