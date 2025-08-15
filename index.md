@@ -1,6 +1,6 @@
 ---
 layout: base
-title: I'm [Your Full Name]
+title: I'm Alice
 hide: true
 ---
 
@@ -55,6 +55,11 @@ Here's a sentence with a footnote. [^1]
 </a>
 
 <br>
+
+<button class="[small] [fillTinted] [secondary]">
+    This is a button
+</button>
+
 
 <!-- Contact Section -->
 ### Get in Touch
