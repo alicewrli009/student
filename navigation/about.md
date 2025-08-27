@@ -8,11 +8,9 @@ comments: true
 ## As a conversation Starter
 
 Here are some places I have lived.
- *I was born in Michigan
- *I moved to San Diego when I was 4
 
-
-
+- I was born in Michigan
+- I moved to San Diego when I was 4
 
 
 
@@ -50,3 +48,4 @@ Gallery of Pics, scroll to the right for more ...
   <img src="{{site.baseurl}}/images/about/grandkids.jpg" alt="Image 11">
   <img src="{{site.baseurl}}/images/about/farm.jpg" alt="Image 12">
 </div>
+![alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/aliceli/Downloads/IMG_6707.JPG?version%3D1755802911327)
