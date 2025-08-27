@@ -8,7 +8,7 @@ comments: true
 ## As a conversation Starter
 
 Here are some places I have lived.
-
+[text](https://www.google.com/imgres?q%3Dimage%20of%20california%20flag%26imgurl%3Dhttps%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F0%2F01%2FFlag_of_California.svg%26imgrefurl%3Dhttps%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AFlag_of_California.svg%26docid%3DbNepJgyOOk3yMM%26tbnid%3Dzd4xKtf0MLoauM%26vet%3D12ahUKEwjy1oqv1auPAxV_IkQIHcDJBoIQM3oECBwQAA..i%26w%3D900%26h%3D600%26hcb%3D2%26ved%3D2ahUKEwjy1oqv1auPAxV_IkQIHcDJBoIQM3oECBwQAA)
 
 
 ### Journey through Life
@@ -21,26 +21,3 @@ These are the schools I have attended
 
 ### Culture, Family, and Fun
 
-Everything for me, as for many others, revolves around family and faith.
-
-- My mother told me that I was Danish, English. and Irish, here is my researched [family tree]({{site.baseurl}}/images/about/familytree.png)
-- My family is pretty big as I have been married twice, my 1st wife passed away.  We have had 5 kids, 4 adopted by me, 1 biological.  Plus, there are three grandkids.  My name to my grandkids is Abuilito.
-- The gallery of pics has some of my family, fun, culture and faith memories.
-
-<comment>
-Gallery of Pics, scroll to the right for more ...
-</comment>
-<div class="image-gallery">
-  <img src="{{site.baseurl}}/images/about/missionary.jpg" alt="Image 1">
-  <img src="{{site.baseurl}}/images/about/john_tamara.jpg" alt="Image 2">
-  <img src="{{site.baseurl}}/images/about/tamara_fam.jpg" alt="Image 3">
-  <img src="{{site.baseurl}}/images/about/surf.jpg" alt="Image 4">
-  <img src="{{site.baseurl}}/images/about/john_lora.jpg" alt="Image 5">
-  <img src="{{site.baseurl}}/images/about/lora_fam.jpg" alt="Image 6">
-  <img src="{{site.baseurl}}/images/about/lora_fam2.jpg" alt="Image 7">
-  <img src="{{site.baseurl}}/images/about/pj_party.jpg" alt="Image 8">
-  <img src="{{site.baseurl}}/images/about/trent_family.png" alt="Image 9">
-  <img src="{{site.baseurl}}/images/about/claire.jpg" alt="Image 10">
-  <img src="{{site.baseurl}}/images/about/grandkids.jpg" alt="Image 11">
-  <img src="{{site.baseurl}}/images/about/farm.jpg" alt="Image 12">
-</div>
