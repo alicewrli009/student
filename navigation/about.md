@@ -8,16 +8,9 @@ comments: true
 
 ### Here are some places I have lived
 
-<p align="left">
-  <figure style="display:inline-block; text-align:center; margin-right:20px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" alt="California Flag" width="150">
-    <figcaption>California</figcaption>
-  </figure>
-
-  <figure style="display:inline-block; text-align:center;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Flag_of_Michigan.svg" alt="Michigan Flag" width="150">
-    <figcaption>Michigan</figcaption>
-  </figure>
+<p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" alt="California Flag" width="150" style="margin-right:20px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Flag_of_Michigan.svg" alt="Michigan Flag" width="150">
 </p>
 
 
@@ -45,4 +38,8 @@ These are the schools I have attended
 - I do not have any pets
 - I used to be a figure skater 
 
+![My First Image](navigation/images/IMG_0085.JPG)
+![My Second Image](navigation/images/IMG_2156-preview.HEIC)
 
+
+2
