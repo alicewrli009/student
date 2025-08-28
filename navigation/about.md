@@ -7,9 +7,8 @@ comments: true
 
 <style>
   body {
-    background-color: #FFB6C1; /* Light pink background */
-    color: black !important;    /* All text black */
-    text-align: center;
+    background-color: #FFB6C1; 
+    color: black !important;    
   }
 
   figure {
