@@ -55,16 +55,40 @@ These are the schools I have attended
 <img src="https://github.com/user-attachments/assets/0589e31c-d986-4a56-81f1-39c8a850ed50" alt="IMG_8490" width="200">
 
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confetti on Scroll</title>
+  <style>
+    body {
+      min-height: 1500px; /* Make page tall enough to scroll */
+      background-color: lightpink;
+      text-align: center;
+      padding: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Scroll to the bottom for confetti!</h1>
+
+<p>Keep scrolling...</p>
+
+<!-- Confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <script>
 window.addEventListener('scroll', () => {
-  // Check if user is at the bottom
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
     // Fire confetti
     confetti({
-      particleCount: 100,
+      particleCount: 150,
       spread: 70,
       origin: { y: 0.6 }
     });
   }
 });
 </script>
+
+</body>
+</html>
