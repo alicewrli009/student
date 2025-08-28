@@ -4,7 +4,27 @@ title: About
 permalink: /about/
 comments: true
 ---
-
+<style>
+  body {
+    background-color: #FFB6C1; /* Light pink background */
+    color: black; /* Black text */
+  }
+  figure {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+  }
+  figcaption {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  img {
+    margin: 5px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: black; /* Ensure headers are black too */
+  }
+</style>
 
 ### Here are some places I have lived
 
@@ -31,7 +51,7 @@ These are the schools I have attended
 - 🎓 I am currently attending Del Norte High School and will graduate in 2027.
 
 
-### Both my parents are from China
+<h4>Both my parents are from China</h4>
 
 <p>
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Flag_of_the_People%27s_Republic_of_China_%28cropped%29.svg" alt="China Flag" width="150">
@@ -45,8 +65,7 @@ These are the schools I have attended
 - I do not have any pets
 - I grew up figure skating 
 
-<h4>Both my parents are from China</h4>
-
+**Here are some pictures of me and my friends**
 
 <img src="https://github.com/user-attachments/assets/1450c8f9-cc68-49cc-b2f9-88a03db6f6e7" alt="IMG_0085" width="200">
 <img src="https://github.com/user-attachments/assets/3801d010-fcd3-43f6-a608-2e8e8378478a" alt="IMG_6719" width="200">
@@ -55,40 +74,4 @@ These are the schools I have attended
 <img src="https://github.com/user-attachments/assets/0589e31c-d986-4a56-81f1-39c8a850ed50" alt="IMG_8490" width="200">
 
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Confetti on Scroll</title>
-  <style>
-    body {
-      min-height: 1500px; /* Make page tall enough to scroll */
-      background-color: lightpink;
-      text-align: center;
-      padding: 50px;
-    }
-  </style>
-</head>
-<body>
 
-<h1>Scroll to the bottom for confetti!</h1>
-
-<p>Keep scrolling...</p>
-
-<!-- Confetti library -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<script>
-window.addEventListener('scroll', () => {
-  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    // Fire confetti
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-  }
-});
-</script>
-
-</body>
-</html>
