@@ -47,7 +47,6 @@ These are the schools I have attended
 
 <img src="https://github.com/user-attachments/assets/1450c8f9-cc68-49cc-b2f9-88a03db6f6e7" alt="IMG_0085" width="200">
 <img src="https://github.com/user-attachments/assets/3801d010-fcd3-43f6-a608-2e8e8378478a" alt="IMG_6719" width="200">
-<img src="https://github.com/user-attachments/assets/49d4d262-60f7-45b1-b776-95281b4cd69c" alt="IMG_8656" width="200">
 <img src="https://github.com/user-attachments/assets/0d1e6d1c-452f-4d61-8b0f-af3b9df26379" alt="IMG_6878" width="200">
 <img src="https://github.com/user-attachments/assets/1016f276-2dac-475f-b42e-dd4d786ae4bf" alt="IMG_8483" width="200">
 <img src="https://github.com/user-attachments/assets/0589e31c-d986-4a56-81f1-39c8a850ed50" alt="IMG_8490" width="200">
