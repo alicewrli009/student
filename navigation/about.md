@@ -21,7 +21,6 @@ comments: true
 </p>
 
 
-
 ### Education Journey
 
 These are the schools I have attended
@@ -43,6 +42,15 @@ These are the schools I have attended
 - I'm on the cheer team
 - I have a little sister who is 12
 - I do not have any pets
-- I used to be a figure skater 
+- I grew up figure skating 
+
+
+![IMG_0085](https://github.com/user-attachments/assets/1450c8f9-cc68-49cc-b2f9-88a03db6f6e7)
+![IMG_6719](![IMG_8656](https://github.com/user-attachments/assets/3801d010-fcd3-43f6-a608-2e8e8378478a)
+![IMG_8656](https://github.com/user-attachments/assets/49d4d262-60f7-45b1-b776-95281b4cd69c)
+![IMG_6878](https://github.com/user-attachments/assets/0d1e6d1c-452f-4d61-8b0f-af3b9df26379)
+![IMG_8483](https://github.com/user-attachments/assets/1016f276-2dac-475f-b42e-dd4d786ae4bf)
+![IMG_8490](https://github.com/user-attachments/assets/0589e31c-d986-4a56-81f1-39c8a850ed50)
+
 
 
