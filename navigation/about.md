@@ -9,9 +9,17 @@ comments: true
 ### Here are some places I have lived
 
 <p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" alt="California Flag" width="150" style="margin-right:20px;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Flag_of_Michigan.svg" alt="Michigan Flag" width="150">
+  <figure style="display:inline-block; text-align:center; margin-right:20px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" alt="California Flag" width="150">
+    <figcaption>California</figcaption>
+  </figure>
+
+  <figure style="display:inline-block; text-align:center;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Flag_of_Michigan.svg" alt="Michigan Flag" width="150">
+    <figcaption>Michigan</figcaption>
+  </figure>
 </p>
+
 
 
 ### Education Journey
@@ -37,7 +45,8 @@ These are the schools I have attended
 - I do not have any pets
 - I grew up figure skating 
 
-**here are pictures of me and my friends**
+<h4>Both my parents are from China</h4>
+
 
 <img src="https://github.com/user-attachments/assets/1450c8f9-cc68-49cc-b2f9-88a03db6f6e7" alt="IMG_0085" width="200">
 <img src="https://github.com/user-attachments/assets/3801d010-fcd3-43f6-a608-2e8e8378478a" alt="IMG_6719" width="200">
@@ -46,8 +55,16 @@ These are the schools I have attended
 <img src="https://github.com/user-attachments/assets/0589e31c-d986-4a56-81f1-39c8a850ed50" alt="IMG_8490" width="200">
 
 
-![My First Image](navigation/images/IMG_0085.JPG)
-![My Second Image](navigation/images/IMG_2156-preview.HEIC)
-
-
-2
+<script>
+window.addEventListener('scroll', () => {
+  // Check if user is at the bottom
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    // Fire confetti
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  }
+});
+</script>
