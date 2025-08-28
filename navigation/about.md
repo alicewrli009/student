@@ -44,6 +44,7 @@ These are the schools I have attended
 - I do not have any pets
 - I grew up figure skating 
 
+**here are pictures of me and my friends**
 
 <img src="https://github.com/user-attachments/assets/1450c8f9-cc68-49cc-b2f9-88a03db6f6e7" alt="IMG_0085" width="200">
 <img src="https://github.com/user-attachments/assets/3801d010-fcd3-43f6-a608-2e8e8378478a" alt="IMG_6719" width="200">
