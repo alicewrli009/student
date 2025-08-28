@@ -4,25 +4,49 @@ title: About
 permalink: /about/
 comments: true
 ---
+
 <style>
   body {
     background-color: #FFB6C1; /* Light pink background */
-    color: black; /* Black text */
+    color: black !important;    /* All text black */
+    text-align: center;
   }
+
   figure {
     display: inline-block;
     text-align: center;
     margin: 20px;
   }
+
   figcaption {
+    color: black !important;
     margin-top: 5px;
     font-weight: bold;
   }
+
+  li, p, h1, h2, h3, h4, h5, h6, a {
+    color: black !important;
+  }
+
   img {
     margin: 5px;
   }
-  h1, h2, h3, h4, h5, h6 {
-    color: black; /* Ensure headers are black too */
+
+  /* Style for confetti button */
+  #confetti-button {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px 0;
+  }
+
+  #confetti-button:hover {
+    background-color: #ff85c1;
   }
 </style>
 
@@ -64,6 +88,7 @@ These are the schools I have attended
 - I have a little sister who is 12
 - I do not have any pets
 - I grew up figure skating 
+- My favorite color is light pink
 
 **Here are some pictures of me and my friends**
 
@@ -75,3 +100,18 @@ These are the schools I have attended
 
 
 
+<!-- Confetti Button -->
+<button id="confetti-button">🎉 Celebrate!</button>
+
+<!-- Confetti library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  document.getElementById('confetti-button').addEventListener('click', () => {
+    // Fire confetti
+    confetti({
+      particleCount: 200,
+      spread: 100,
+      origin: { y: 0.6 }
+    });
+  });
+</script>
