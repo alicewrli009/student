@@ -2,34 +2,38 @@
 layout: base
 title: Background with Object
 description: Use JavaScript to have an in motion background.
-sprite: images/platformer/sprites/flying-ufo.png
-background: images/platformer/backgrounds/alien_planet1.jpg
+# below are images for game
+sprite: images/bird.png
+background: images/beach.png
 permalink: /background
 ---
-
+<!-- below is the game world-->
 <canvas id="world"></canvas>
-
+<!-- below is the code that makes the Game World -->
 <script>
+  // defines the canvas, like a painter
   const canvas = document.getElementById("world");
   const ctx = canvas.getContext('2d');
+  // setting up image objects
   const backgroundImg = new Image();
   const spriteImg = new Image();
-  backgroundImg.src = '{{page.background}}';
-  spriteImg.src = '{{page.sprite}}';
-
+  // Jekyll assignment of Images to Javascript
+  backgroundImg.src = '{{page.background}}'; //background image
+  spriteImg.src = '{{page.sprite}}'; //player image
   let imagesLoaded = 0;
   backgroundImg.onload = function() {
     imagesLoaded++;
     startGameWorld();
   };
+  /* this block starts the game
+  *it check for all images being loaded before starting
+  */
   spriteImg.onload = function() {
     imagesLoaded++;
     startGameWorld();
   };
-
   function startGameWorld() {
     if (imagesLoaded < 2) return;
-
     class GameObject {
       constructor(image, width, height, x = 0, y = 0, speedRatio = 0) {
         this.image = image;
@@ -45,7 +49,6 @@ permalink: /background
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
       }
     }
-
     class Background extends GameObject {
       constructor(image, gameWorld) {
         // Fill entire canvas
@@ -59,7 +62,6 @@ permalink: /background
         ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
       }
     }
-
     class Player extends GameObject {
       constructor(image, gameWorld) {
         const width = image.naturalWidth / 2;
@@ -75,7 +77,6 @@ permalink: /background
         this.frame++;
       }
     }
-
     class GameWorld {
       static gameSpeed = 5;
       constructor(backgroundImg, spriteImg) {
@@ -90,7 +91,6 @@ permalink: /background
         this.canvas.style.position = 'absolute';
         this.canvas.style.left = `0px`;
         this.canvas.style.top = `${(window.innerHeight - this.height) / 2}px`;
-
         this.objects = [
          new Background(backgroundImg, this),
          new Player(spriteImg, this)
@@ -108,7 +108,6 @@ permalink: /background
         this.gameLoop();
       }
     }
-
     const world = new GameWorld(backgroundImg, spriteImg);
     world.start();
   }
