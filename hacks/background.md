@@ -23,7 +23,7 @@ permalink: /background
   let imagesLoaded = 0;
   backgroundImg.onload = function() {
     imagesLoaded++;
-    startGameWorld();
+    startGameWorld();>?
   };
   /* this block starts the game
   *it check for all images being loaded before starting
