@@ -9,7 +9,6 @@ permalink: /thesis
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Thesis Generator</title>
-    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -52,10 +51,6 @@ permalink: /thesis
 
         .content {
             padding: 40px;
-        }
-
-        .input-section {
-            margin-bottom: 30px;
         }
 
         .form-group {
@@ -117,7 +112,6 @@ permalink: /thesis
             padding: 10px 15px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
         }
 
         .btn-add {
@@ -127,16 +121,7 @@ permalink: /thesis
             padding: 10px 20px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
             margin-top: 10px;
-        }
-
-        .btn-add:hover {
-            background: #26de81;
-        }
-
-        .btn-remove:hover {
-            background: #ff6348;
         }
 
         .button-group {
@@ -171,14 +156,9 @@ permalink: /thesis
             color: #2f3542;
         }
 
-        .btn-secondary:hover {
-            background: #dfe4ea;
-        }
-
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            transform: none !important;
         }
 
         .status-message {
@@ -186,18 +166,6 @@ permalink: /thesis
             border-radius: 8px;
             margin: 20px 0;
             display: none;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .output-section {
@@ -218,12 +186,6 @@ permalink: /thesis
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 20px;
-            transition: all 0.3s;
-        }
-
-        .thesis-card:hover {
-            border-color: #667eea;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .thesis-statement {
@@ -243,20 +205,9 @@ permalink: /thesis
             margin-bottom: 15px;
         }
 
-        .strength-high {
-            background: #2ed573;
-            color: white;
-        }
-
-        .strength-medium {
-            background: #ffa502;
-            color: white;
-        }
-
-        .strength-low {
-            background: #ff4757;
-            color: white;
-        }
+        .strength-high { background: #2ed573; color: white; }
+        .strength-medium { background: #ffa502; color: white; }
+        .strength-low { background: #ff4757; color: white; }
 
         .thesis-details {
             margin-top: 15px;
@@ -268,7 +219,6 @@ permalink: /thesis
             color: #667eea;
             margin-bottom: 10px;
             font-size: 14px;
-            text-transform: uppercase;
         }
 
         .thesis-details ul {
@@ -278,7 +228,6 @@ permalink: /thesis
 
         .thesis-details li {
             margin-bottom: 8px;
-            line-height: 1.5;
         }
 
         .btn-use-thesis {
@@ -289,11 +238,6 @@ permalink: /thesis
             border-radius: 6px;
             cursor: pointer;
             margin-top: 15px;
-            font-size: 14px;
-        }
-
-        .btn-use-thesis:hover {
-            background: #5568d3;
         }
 
         .loading {
@@ -329,9 +273,13 @@ permalink: /thesis
             margin-bottom: 10px;
         }
 
-        .recommendations p {
-            color: #856404;
-            line-height: 1.6;
+        .debug-info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -343,50 +291,49 @@ permalink: /thesis
         </div>
 
         <div class="content">
-            <div class="input-section">
-                <div class="form-group">
-                    <label for="topic">Topic *</label>
-                    <input type="text" id="topic" placeholder="e.g., Social Media Impact on Society" required>
-                </div>
+            <div class="form-group">
+                <label for="topic">Topic *</label>
+                <input type="text" id="topic" placeholder="e.g., Social Media Impact on Society" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="position">Your Position/Argument *</label>
-                    <textarea id="position" placeholder="e.g., Social media has more negative effects than positive ones on teenage mental health" required></textarea>
-                </div>
+            <div class="form-group">
+                <label for="position">Your Position/Argument *</label>
+                <textarea id="position" placeholder="e.g., Social media has negative effects on mental health" required></textarea>
+            </div>
 
-                <div class="form-group">
-                    <label>Supporting Points (Optional)</label>
-                    <div class="points-container" id="pointsContainer">
-                        <div class="point-input">
-                            <input type="text" class="supporting-point" placeholder="Supporting point 1">
-                        </div>
+            <div class="form-group">
+                <label>Supporting Points (Optional)</label>
+                <div class="points-container" id="pointsContainer">
+                    <div class="point-input">
+                        <input type="text" class="supporting-point" placeholder="Supporting point 1">
                     </div>
-                    <button class="btn-add" onclick="addPoint()">+ Add Point</button>
                 </div>
+                <button class="btn-add" onclick="addPoint()">+ Add Point</button>
+            </div>
 
-                <div class="form-group">
-                    <label for="thesisType">Thesis Type</label>
-                    <select id="thesisType">
-                        <option value="Argumentative">Argumentative</option>
-                        <option value="Analytical">Analytical</option>
-                        <option value="Expository">Expository</option>
-                        <option value="Compare/Contrast">Compare/Contrast</option>
-                        <option value="Cause/Effect">Cause/Effect</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="thesisType">Thesis Type</label>
+                <select id="thesisType">
+                    <option value="Argumentative">Argumentative</option>
+                    <option value="Analytical">Analytical</option>
+                    <option value="Expository">Expository</option>
+                    <option value="Compare/Contrast">Compare/Contrast</option>
+                    <option value="Cause/Effect">Cause/Effect</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="audience">Target Audience (Optional)</label>
-                    <input type="text" id="audience" placeholder="e.g., General academic, High school, College">
-                </div>
+            <div class="form-group">
+                <label for="audience">Target Audience (Optional)</label>
+                <input type="text" id="audience" placeholder="e.g., General academic">
+            </div>
 
-                <div class="button-group">
-                    <button class="btn-primary" onclick="generateThesis()">✨ Generate Thesis</button>
-                    <button class="btn-secondary" onclick="clearForm()">🔄 Clear Form</button>
-                </div>
+            <div class="button-group">
+                <button class="btn-primary" onclick="generateThesis()">✨ Generate Thesis</button>
+                <button class="btn-secondary" onclick="clearForm()">🔄 Clear Form</button>
             </div>
 
             <div id="statusMessage" class="status-message"></div>
+            <div id="debugInfo" class="debug-info" style="display: none;"></div>
 
             <div class="output-section" id="outputSection" style="display: none;">
                 <h2>Generated Thesis Statements</h2>
@@ -397,10 +344,11 @@ permalink: /thesis
     </div>
 
     <script>
-        // Configuration
-        const API_URL = 'http://localhost:8587/api/';
+        // Auto-detect API URL based on current hostname
+        const API_URL = `http://${window.location.hostname}:8587/api/thesis`;
+        
+        console.log('API URL:', API_URL);
 
-        // Add supporting point field
         function addPoint() {
             const container = document.getElementById('pointsContainer');
             const pointDiv = document.createElement('div');
@@ -412,18 +360,15 @@ permalink: /thesis
             container.appendChild(pointDiv);
         }
 
-        // Remove supporting point field
         function removePoint(btn) {
             btn.parentElement.remove();
         }
 
-        // Show status message
         function showStatus(message, type) {
             const statusDiv = document.getElementById('statusMessage');
             statusDiv.textContent = message;
             statusDiv.style.display = 'block';
             
-            // Set color based on type
             const colors = {
                 success: { bg: '#d4edda', color: '#155724', border: '#c3e6cb' },
                 error: { bg: '#f8d7da', color: '#721c24', border: '#f5c6cb' },
@@ -435,12 +380,15 @@ permalink: /thesis
             statusDiv.style.color = style.color;
             statusDiv.style.border = `1px solid ${style.border}`;
             
-            setTimeout(() => {
-                statusDiv.style.display = 'none';
-            }, 5000);
+            setTimeout(() => statusDiv.style.display = 'none', 5000);
         }
 
-        // Generate thesis statements
+        function showDebug(info) {
+            const debugDiv = document.getElementById('debugInfo');
+            debugDiv.textContent = JSON.stringify(info, null, 2);
+            debugDiv.style.display = 'block';
+        }
+
         async function generateThesis() {
             const topic = document.getElementById('topic').value.trim();
             const position = document.getElementById('position').value.trim();
@@ -450,7 +398,6 @@ permalink: /thesis
                 return;
             }
 
-            // Collect supporting points
             const pointInputs = document.querySelectorAll('.supporting-point');
             const supportingPoints = Array.from(pointInputs)
                 .map(input => input.value.trim())
@@ -459,28 +406,44 @@ permalink: /thesis
             const thesisType = document.getElementById('thesisType').value;
             const audience = document.getElementById('audience').value.trim();
 
-            // Show loading
             const outputSection = document.getElementById('outputSection');
             const thesesOutput = document.getElementById('thesesOutput');
             outputSection.style.display = 'block';
             thesesOutput.innerHTML = '<div class="loading"><div class="spinner"></div><p>Generating your thesis statements...</p></div>';
 
+            const requestData = {
+                topic,
+                position,
+                supportingPoints,
+                thesisType,
+                audience
+            };
+
+            console.log('Sending request:', requestData);
+            console.log('To URL:', API_URL);
+
             try {
-                const response = await fetch(`${API_URL}/thesis`, {
+                const response = await fetch(API_URL, {
                     method: 'POST',
+                    mode: 'cors',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
-                    body: JSON.stringify({
-                        topic,
-                        position,
-                        supportingPoints,
-                        thesisType,
-                        audience
-                    })
+                    body: JSON.stringify(requestData)
                 });
 
+                console.log('Response status:', response.status);
+                console.log('Response headers:', [...response.headers.entries()]);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error response:', errorText);
+                    throw new Error(`HTTP ${response.status}: ${errorText}`);
+                }
+
                 const result = await response.json();
+                console.log('Success result:', result);
 
                 if (result.success) {
                     displayTheses(result.data);
@@ -489,14 +452,19 @@ permalink: /thesis
                     throw new Error(result.error || 'Failed to generate thesis');
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error details:', error);
                 thesesOutput.innerHTML = '';
                 outputSection.style.display = 'none';
                 showStatus('❌ Error: ' + error.message, 'error');
+                showDebug({
+                    error: error.message,
+                    stack: error.stack,
+                    apiUrl: API_URL,
+                    requestData
+                });
             }
         }
 
-        // Display generated theses
         function displayTheses(data) {
             const thesesOutput = document.getElementById('thesesOutput');
             const recommendationsOutput = document.getElementById('recommendationsOutput');
@@ -508,7 +476,7 @@ permalink: /thesis
                 return;
             }
 
-            data.theses.forEach((thesis, index) => {
+            data.theses.forEach((thesis) => {
                 const strengthClass = thesis.strength >= 8 ? 'strength-high' : 
                                      thesis.strength >= 6 ? 'strength-medium' : 'strength-low';
                 
@@ -537,7 +505,7 @@ permalink: /thesis
                         </div>
                     ` : ''}
                     
-                    <button class="btn-use-thesis" onclick="useThesis('${thesis.statement.replace(/'/g, "\\'")}')">
+                    <button class="btn-use-thesis" onclick="useThesis(\`${thesis.statement.replace(/`/g, '\\`')}\`)">
                         Use This Thesis
                     </button>
                 `;
@@ -545,7 +513,6 @@ permalink: /thesis
                 thesesOutput.appendChild(card);
             });
 
-            // Display recommendations
             if (data.recommendations) {
                 recommendationsOutput.innerHTML = `
                     <div class="recommendations">
@@ -556,7 +523,6 @@ permalink: /thesis
             }
         }
 
-        // Use selected thesis
         function useThesis(statement) {
             navigator.clipboard.writeText(statement).then(() => {
                 showStatus('📋 Thesis copied to clipboard!', 'success');
@@ -565,7 +531,6 @@ permalink: /thesis
             });
         }
 
-        // Clear form
         function clearForm() {
             document.getElementById('topic').value = '';
             document.getElementById('position').value = '';
@@ -580,9 +545,9 @@ permalink: /thesis
             `;
             
             document.getElementById('outputSection').style.display = 'none';
+            document.getElementById('debugInfo').style.display = 'none';
             showStatus('Form cleared', 'info');
         }
     </script>
 </body>
 </html>
-
