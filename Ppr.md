@@ -58,10 +58,15 @@ if (!result.success || !result.data) {
 displayTheses(result.data);
 showThesisStatus('✅ Thesis statements generated successfully!', 'success');
 ```
-const result = await response.json() — takes the raw HTTP response and parses it from JSON into a usable JavaScript object, storing it in result. The await means the program pauses here until that conversion finishes.
-The if block — this is a validation check. It's asking: "did the server actually return what we expected?" If result.success is false/missing, or result.data is empty/missing, something went wrong, so it throws an error and stops execution rather than trying to display broken data.
-displayTheses(result.data) — this is the actual call to your student-developed procedure. It passes result.data (the thesis statements and recommendations from the server) as the argument, which becomes the data parameter inside displayTheses. This is why it qualifies as "a call to the procedure" — it's the moment the procedure gets invoked with real data.
-showThesisStatus(...) — after successfully calling displayTheses, this shows a green confirmation message to the user.
+### ii. Call to the Procedure — Explanation
+
+**`const result = await response.json()`** — takes the raw HTTP response and parses it from JSON into a usable JavaScript object, storing it in `result`. The `await` means the program pauses here until that conversion finishes.
+
+**The `if` block** — this is a validation check. It's asking: "did the server actually return what we expected?" If `result.success` is false/missing, or `result.data` is empty/missing, something went wrong, so it throws an error and stops execution rather than trying to display broken data.
+
+**`displayTheses(result.data)`** — this is the actual call to the student-developed procedure. It passes `result.data` (the thesis statements and recommendations from the server) as the argument, which becomes the `data` parameter inside `displayTheses`. This is why it qualifies as "a call to the procedure" — it's the moment the procedure gets invoked with real data.
+
+**`showThesisStatus(...)`** — after successfully calling `displayTheses`, this shows a green confirmation message to the user.
 
 ---
 
