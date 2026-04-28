@@ -47,6 +47,7 @@ permalink: /CPT
       display: grid;
       grid-template-columns: 1fr 80px 120px 36px;
       gap: 8px;
+      
       align-items: center;
     }
 

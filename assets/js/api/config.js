@@ -5,19 +5,25 @@ export const baseurl = "{{ site.baseurl }}";
 
 export var pythonURI;
 if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-    pythonURI = "http://localhost:8587";  // Same URI for localhost or 127.0.0.1
+    pythonURI = "http://127.0.0.1:4600";  // Changed from localhost to 127.0.0.1
 } else {
     pythonURI = "https://flaskstu.opencodingsociety.com";
-
 }
 
 export var javaURI;
-// 127.0.0.1:8585 does not work for some machines
-if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-        javaURI = "http://localhost:8585";
+if (location.hostname === "localhost") {
+    javaURI = "http://localhost:8085";  // Typical Java Spring port
+} else if (location.hostname === "127.0.0.1") {
+    javaURI = "http://127.0.0.1:4600";  // Match the hostname!
 } else {
     javaURI = "https://springstu.opencodingsociety.com";
 }
+
+if app.config.get('GEMINI_API_KEY'):
+    genai.configure(api_key=app.config['GEMINI_API_KEY'])
+    gemini_model = genai.GenerativeModel('gemini-pro')
+else:
+    gemini_model = None
 
 export const fetchOptions = {
     method: 'GET',  // Default method is GET
@@ -61,3 +67,5 @@ export function login(options) {
         document.getElementById(options.message).textContent = 'Possible CORS or service down error: ' + error;
     });
 }
+
+
