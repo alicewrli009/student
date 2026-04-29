@@ -2,20 +2,35 @@
 permalink: /CPT
 ---
 
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GPA Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
   <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #f5f3ef;
+      --surface: #ffffff;
+      --border: #dddad4;
+      --text: #1a1a18;
+      --muted: #7a7870;
+      --accent: #2d5a3d;
+      --accent-light: #e8f0ea;
+      --danger: #c0392b;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f3ef;
-      color: #1a1a18;
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -24,12 +39,18 @@ permalink: /CPT
 
     .container { width: 100%; max-width: 680px; }
 
-    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 4px; }
-    p.subtitle { font-size: 0.875rem; color: #7a7870; margin-bottom: 1.5rem; }
+    header { margin-bottom: 2.5rem; }
+    header h1 {
+      font-family: var(--mono);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    header p { font-size: 0.875rem; color: var(--muted); margin-top: 4px; }
 
     .col-labels {
       display: grid;
-      grid-template-columns: 1fr 80px 120px 36px;
+      grid-template-columns: 1fr 90px 130px 36px;
       gap: 8px;
       margin-bottom: 6px;
       padding: 0 2px;
@@ -38,57 +59,72 @@ permalink: /CPT
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: #7a7870;
+      color: var(--muted);
     }
 
     #courses-list { display: flex; flex-direction: column; gap: 8px; }
 
     .course-row {
       display: grid;
-      grid-template-columns: 1fr 80px 120px 36px;
+      grid-template-columns: 1fr 90px 130px 36px;
       gap: 8px;
-      
       align-items: center;
+      animation: fadeIn 0.18s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     input[type="text"], select {
+      font-family: var(--sans);
       font-size: 14px;
       height: 38px;
       padding: 0 10px;
-      border: 1px solid #dddad4;
+      border: 1px solid var(--border);
       border-radius: 6px;
-      background: #fff;
-      color: #1a1a18;
+      background: var(--surface);
+      color: var(--text);
       width: 100%;
       outline: none;
+      transition: border-color 0.15s;
     }
-    input[type="text"]:focus, select:focus { border-color: #2d5a3d; }
+    input[type="text"]:focus, select:focus { border-color: var(--accent); }
 
     .del-btn {
       height: 38px; width: 36px;
-      border: 1px solid #dddad4;
+      border: 1px solid var(--border);
       border-radius: 6px;
-      background: #fff;
-      color: #7a7870;
+      background: var(--surface);
+      color: var(--muted);
       cursor: pointer;
       font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, color 0.15s;
     }
-    .del-btn:hover { background: #fdecea; color: #c0392b; }
+    .del-btn:hover { background: #fdecea; border-color: #e8b4b0; color: var(--danger); }
 
     .add-btn {
       margin-top: 12px;
       height: 38px;
       padding: 0 16px;
-      border: 1px dashed #dddad4;
+      border: 1px dashed var(--border);
       border-radius: 6px;
       background: transparent;
-      color: #7a7870;
+      color: var(--muted);
+      font-family: var(--sans);
       font-size: 13px;
       cursor: pointer;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .add-btn:hover { border-color: #2d5a3d; color: #2d5a3d; background: #e8f0ea; }
+    .add-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 
-    .divider { height: 1px; background: #dddad4; margin: 2rem 0; }
+    .divider { height: 1px; background: var(--border); margin: 2rem 0; }
 
     .results-grid {
       display: grid;
@@ -98,56 +134,72 @@ permalink: /CPT
     }
 
     .result-card {
-      background: #fff;
-      border: 1px solid #dddad4;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.25rem;
       text-align: center;
     }
-    .result-card.weighted { border-color: #2d5a3d; background: #e8f0ea; }
+    .result-card.weighted { border-color: var(--accent); background: var(--accent-light); }
 
     .result-label {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: #7a7870;
+      color: var(--muted);
       margin-bottom: 8px;
     }
-    .result-card.weighted .result-label { color: #2d5a3d; }
+    .result-card.weighted .result-label { color: var(--accent); }
 
     .result-value {
-      font-family: monospace;
+      font-family: var(--mono);
       font-size: 2.5rem;
-      font-weight: 600;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1;
     }
-    .result-card.weighted .result-value { color: #2d5a3d; }
+    .result-card.weighted .result-value { color: var(--accent); }
 
-    .result-sub { font-size: 11px; color: #7a7870; margin-top: 6px; }
+    .result-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
 
     .summary {
-      background: #fff;
-      border: 1px solid #dddad4;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 0.75rem 1rem;
       font-size: 13px;
-      color: #7a7870;
+      color: var(--muted);
       display: none;
     }
+
+    .empty-state {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    py-terminal { display: none !important; }
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>GPA Calculator</h1>
-  <p class="subtitle">Enter your courses to calculate weighted and unweighted GPA</p>
+  <header>
+    <h1>GPA Calculator</h1>
+    <p>Enter your courses to calculate weighted and unweighted GPA</p>
+  </header>
 
   <div class="col-labels">
-    <span>Course Name</span>
+    <span>Course name</span>
     <span>Grade</span>
-    <span>Course Type</span>
+    <span>Course type</span>
     <span></span>
   </div>
 
-  <div id="courses-list"></div>
+  <div id="courses-list">
+    <div class="empty-state" id="empty-msg">No courses yet — add one below</div>
+  </div>
+
   <button class="add-btn" id="add-btn">+ Add course</button>
 
   <div class="divider"></div>
@@ -171,10 +223,14 @@ permalink: /CPT
 </div>
 
 <script type="py">
-from pyscript import document, when
 
-courses = []
+from pyscript import document
+from pyodide.ffi import create_proxy
 
+courses = []    # LIST — stores all course objects
+next_id = [1]   # mutable counter in a list so nested functions can update it
+
+# Grade-point lookup tables — dictionaries act as selection maps
 UNWEIGHTED = {"A": 4, "B": 3, "C": 2, "D": 1, "F": 0}
 WEIGHTED = {
     "Regular": {"A": 4, "B": 3, "C": 2, "D": 1, "F": 0},
@@ -184,102 +240,190 @@ WEIGHTED = {
 
 
 def calculate_gpa(course_list):
-    if len(course_list) == 0:
-        return 0.0, 0.0
+    """
+    Calculate unweighted and weighted GPA from a list of course dicts.
 
-    uw_total = 0
-    w_total = 0
+    Parameters
+    ----------
+    course_list : list of dicts with keys 'grade' (str) and 'type' (str)
+
+    Returns
+    -------
+    (float, float) — (unweighted_gpa, weighted_gpa)
+    (None, None)   — if course_list is empty
+    """
+
+  
+    if len(course_list) == 0:
+        return None, None
+
+    uw_total = 0   # running total for unweighted points
+    w_total  = 0   # running total for weighted points
+
 
     for course in course_list:
-        grade = course["grade"]
-        course_type = course["type"]
-        uw_total += UNWEIGHTED[grade]
-        w_total += WEIGHTED[course_type][grade]
+        uw_total += UNWEIGHTED[course["grade"]]
+        w_total  += WEIGHTED[course["type"]][course["grade"]]
 
     unweighted_gpa = round(uw_total / len(course_list), 2)
-    weighted_gpa = round(w_total / len(course_list), 2)
+    weighted_gpa   = round(w_total  / len(course_list), 2)
 
     return unweighted_gpa, weighted_gpa
 
+def calculate_and_display():
+    """
+    Call calculate_gpa and write results to the DOM (OUTPUT).
+    """
+    uw, w = calculate_gpa(courses)   # CALL to student-developed procedure
 
-def get_grade():
-    valid_grades = ["A", "B", "C", "D", "F"]
-    while True:
-        grade = input("  Grade (A/B/C/D/F): ").strip().upper()
-        if grade in valid_grades:
-            return grade
-        print("  Invalid grade. Please enter A, B, C, D, or F.")
-
-
-def get_course_type():
-    valid_types = {"1": "Regular", "2": "Honors", "3": "AP"}
-    while True:
-        print("  Course type:")
-        print("    1 - Regular")
-        print("    2 - Honors")
-        print("    3 - AP")
-        choice = input("  Enter 1, 2, or 3: ").strip()
-        if choice in valid_types:
-            return valid_types[choice]
-        print("  Invalid choice. Please enter 1, 2, or 3.")
+    uw_el   = document.getElementById("uw-gpa")
+    w_el    = document.getElementById("w-gpa")
+    sum_el  = document.getElementById("summary")
+    sum_txt = document.getElementById("summary-text")
 
 
-def display_results(course_list):
-    if len(course_list) == 0:
-        print("\nNo courses entered yet.")
+    if uw is None:
+        uw_el.textContent    = "—"
+        w_el.textContent     = "—"
+        sum_el.style.display = "none"
+    else:
+        # OUTPUT — write computed GPA values to the page
+        uw_el.textContent = f"{uw:.2f}"
+        w_el.textContent  = f"{w:.2f}"
+
+        ap_count     = sum(1 for c in courses if c["type"] == "AP")
+        honors_count = sum(1 for c in courses if c["type"] == "Honors")
+        boost        = round(w - uw, 2)
+        count        = len(courses)
+
+        parts = [f"{count} course{'s' if count != 1 else ''}"]
+        if ap_count:     parts.append(f"{ap_count} AP")
+        if honors_count: parts.append(f"{honors_count} Honors")
+        parts.append(f"weighting boost +{boost:.2f}")
+
+        sum_txt.textContent  = "  ·  ".join(parts)
+        sum_el.style.display = "block"
+
+
+def render_courses():
+    """
+    Re-render the full course list to the DOM.
+    ITERATION — one row is built per course in the LIST.
+    """
+    list_el = document.getElementById("courses-list")
+    list_el.innerHTML = ""
+
+
+    if len(courses) == 0:
+        empty = document.createElement("div")
+        empty.className = "empty-state"
+        empty.id = "empty-msg"
+        empty.textContent = "No courses yet — add one below"
+        list_el.appendChild(empty)
         return
 
-    print("\n--- Your Courses ---")
-    for i, course in enumerate(course_list):
-        name = course["name"] if course["name"] else f"Course {i + 1}"
-        print(f"  {name}: {course['grade']} | {course['type']}")
+    for course in courses:
+        cid = course["id"]
 
-    unweighted, weighted = calculate_gpa(course_list)
-
-    print("\n--- GPA Results ---")
-    print(f"  Unweighted GPA : {unweighted:.2f}  (A=4, B=3, C=2, D=1, F=0)")
-    print(f"  Weighted GPA   : {weighted:.2f}  (AP/Honors A=5, B=4, C=3, D=2, F=1)")
-    print(f"  Weighting boost: +{round(weighted - unweighted, 2):.2f}")
+        row = document.createElement("div")
+        row.className = "course-row"
+        row.id = f"course-{cid}"
 
 
-def main():
-    print("=== GPA Calculator ===")
-    print("Enter your courses one at a time. Type 'done' when finished.\n")
+        name_input = document.createElement("input")
+        name_input.type = "text"
+        name_input.placeholder = "e.g. English"
+        name_input.value = course["name"]
 
-    while True:
-        print("Options:")
-        print("  1 - Add a course")
-        print("  2 - View GPA")
-        print("  3 - Clear all courses")
-        print("  4 - Quit")
-        choice = input("Choice: ").strip()
+        def make_name_handler(course_id):
+            def handler(ev):
+                update_field(course_id, "name", ev.target.value)
+            return handler
+        name_input.addEventListener("input", create_proxy(make_name_handler(cid)))
 
-        if choice == "1":
-            print("\nNew course:")
-            name = input("  Course name (or press Enter to skip): ").strip()
-            grade = get_grade()
-            course_type = get_course_type()
-            courses.append({"name": name, "grade": grade, "type": course_type})
-            print(f"  Added: {name or 'Unnamed'} | {grade} | {course_type}\n")
+    
+        grade_sel = document.createElement("select")
+        for g in ["A", "B", "C", "D", "F"]:
+            opt = document.createElement("option")
+            opt.value = g
+            opt.textContent = g
+            if course["grade"] == g:
+                opt.selected = True
+            grade_sel.appendChild(opt)
 
-        elif choice == "2":
-            display_results(courses)
-            print()
+        def make_grade_handler(course_id):
+            def handler(ev):
+                update_field(course_id, "grade", ev.target.value)
+            return handler
+        grade_sel.addEventListener("change", create_proxy(make_grade_handler(cid)))
 
-        elif choice == "3":
-            courses.clear()
-            print("All courses cleared.\n")
+    
+        type_sel = document.createElement("select")
+        for t in ["Regular", "Honors", "AP"]:
+            opt = document.createElement("option")
+            opt.value = t
+            opt.textContent = t
+            if course["type"] == t:
+                opt.selected = True
+            type_sel.appendChild(opt)
 
-        elif choice == "4":
-            display_results(courses)
-            print("\nGoodbye!")
+        def make_type_handler(course_id):
+            def handler(ev):
+                update_field(course_id, "type", ev.target.value)
+            return handler
+        type_sel.addEventListener("change", create_proxy(make_type_handler(cid)))
+
+
+        del_btn = document.createElement("button")
+        del_btn.className = "del-btn"
+        del_btn.textContent = "×"
+        del_btn.title = "Remove"
+
+        def make_del_handler(course_id):
+            def handler(ev):
+                remove_course(course_id)
+            return handler
+        del_btn.addEventListener("click", create_proxy(make_del_handler(cid)))
+
+        row.appendChild(name_input)
+        row.appendChild(grade_sel)
+        row.appendChild(type_sel)
+        row.appendChild(del_btn)
+        list_el.appendChild(row)
+
+
+def add_course(event=None):
+    """Add a blank course to the LIST, re-render, and recalculate. (USER INPUT handler)"""
+    cid = next_id[0]
+    next_id[0] += 1
+    courses.append({"id": cid, "name": "", "grade": "A", "type": "Regular"})
+    render_courses()
+    calculate_and_display()
+
+
+def remove_course(course_id):
+    """Remove the course matching course_id from the LIST, re-render, recalculate."""
+    for i, c in enumerate(courses):
+        if c["id"] == course_id:
+            courses.pop(i)
             break
+    render_courses()
+    calculate_and_display()
 
-        else:
-            print("Invalid option. Please enter 1, 2, 3, or 4.\n")
 
+def update_field(course_id, field, value):
+    """Update one field on a course dict, then recalculate. (USER INPUT handler)"""
+    for c in courses:
+        if c["id"] == course_id:
+            c[field] = value   # SELECTION — update only the named field
+            break
+    calculate_and_display()
 
-main()
+document.getElementById("add-btn").addEventListener("click", create_proxy(add_course))
+
+add_course()
+add_course()
+add_course()
 </script>
 </body>
 </html>
