@@ -141,9 +141,9 @@ permalink: /CPT
   <p class="subtitle">Enter your courses to calculate weighted and unweighted GPA</p>
 
   <div class="col-labels">
-    <span>Course name</span>
+    <span>Course Name</span>
     <span>Grade</span>
-    <span>Course type</span>
+    <span>Course Type</span>
     <span></span>
   </div>
 
