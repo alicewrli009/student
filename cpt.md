@@ -227,10 +227,10 @@ permalink: /CPT
 from pyscript import document
 from pyodide.ffi import create_proxy
 
-courses = []    # LIST — stores all course objects
-next_id = [1]   # mutable counter in a list so nested functions can update it
+courses = []    
+next_id = [1]  
 
-# Grade-point lookup tables — dictionaries act as selection maps
+
 UNWEIGHTED = {"A": 4, "B": 3, "C": 2, "D": 1, "F": 0}
 WEIGHTED = {
     "Regular": {"A": 4, "B": 3, "C": 2, "D": 1, "F": 0},
@@ -240,26 +240,10 @@ WEIGHTED = {
 
 
 def calculate_gpa(course_list):
-    """
-    Calculate unweighted and weighted GPA from a list of course dicts.
-
-    Parameters
-    ----------
-    course_list : list of dicts with keys 'grade' (str) and 'type' (str)
-
-    Returns
-    -------
-    (float, float) — (unweighted_gpa, weighted_gpa)
-    (None, None)   — if course_list is empty
-    """
-
-  
     if len(course_list) == 0:
         return None, None
-
-    uw_total = 0   # running total for unweighted points
-    w_total  = 0   # running total for weighted points
-
+    uw_total = 0  
+    w_total  = 0  
 
     for course in course_list:
         uw_total += UNWEIGHTED[course["grade"]]
@@ -271,23 +255,18 @@ def calculate_gpa(course_list):
     return unweighted_gpa, weighted_gpa
 
 def calculate_and_display():
-    """
-    Call calculate_gpa and write results to the DOM (OUTPUT).
-    """
-    uw, w = calculate_gpa(courses)   # CALL to student-developed procedure
+    uw, w = calculate_gpa(courses)  
 
     uw_el   = document.getElementById("uw-gpa")
     w_el    = document.getElementById("w-gpa")
     sum_el  = document.getElementById("summary")
     sum_txt = document.getElementById("summary-text")
 
-
     if uw is None:
         uw_el.textContent    = "—"
         w_el.textContent     = "—"
         sum_el.style.display = "none"
     else:
-        # OUTPUT — write computed GPA values to the page
         uw_el.textContent = f"{uw:.2f}"
         w_el.textContent  = f"{w:.2f}"
 
@@ -306,10 +285,6 @@ def calculate_and_display():
 
 
 def render_courses():
-    """
-    Re-render the full course list to the DOM.
-    ITERATION — one row is built per course in the LIST.
-    """
     list_el = document.getElementById("courses-list")
     list_el.innerHTML = ""
 
@@ -393,7 +368,6 @@ def render_courses():
 
 
 def add_course(event=None):
-    """Add a blank course to the LIST, re-render, and recalculate. (USER INPUT handler)"""
     cid = next_id[0]
     next_id[0] += 1
     courses.append({"id": cid, "name": "", "grade": "A", "type": "Regular"})
@@ -402,7 +376,6 @@ def add_course(event=None):
 
 
 def remove_course(course_id):
-    """Remove the course matching course_id from the LIST, re-render, recalculate."""
     for i, c in enumerate(courses):
         if c["id"] == course_id:
             courses.pop(i)
@@ -412,7 +385,6 @@ def remove_course(course_id):
 
 
 def update_field(course_id, field, value):
-    """Update one field on a course dict, then recalculate. (USER INPUT handler)"""
     for c in courses:
         if c["id"] == course_id:
             c[field] = value   # SELECTION — update only the named field
